@@ -64,13 +64,11 @@ with open("conversions.txt") as f:
 			IDs.append(PMCID[3:])
 print "PMCIDs:", len(IDs)
 
-exp_time = len(IDs) * max_rate * 2 / 60.0
+exp_time = len(IDs) * max_rate / 60.0
 print "Downloading full text of articles. Minimum time = %0.1f minutes" % exp_time
 for PMCID in IDs:
 	time.sleep(max_rate)
 	subprocess.call('wget -a parser_log -O - "%s" >> %s.articles.txt' % (download_base % PMCID, f_base), shell=True)
-	time.sleep(max_rate)
-	subprocess.call('wget -a parser_log -O - "%s" >> %s.front_matter.txt' % (download_base_fm % PMCID, f_base), shell=True)
 
 count = 0
 subprocess.call('grep "/body" %s.articles.txt > tmp_grep' % f_base, shell=True)
