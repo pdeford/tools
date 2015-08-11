@@ -40,7 +40,8 @@ with open("accessions.txt") as f:
 	for line in f:
 		if line.strip().startswith("<Id>"):
 			PMID = line.strip()[4:-5]
-			IDs.append(PMID)
+			if PMID not in IDs:
+				IDs.append(PMID)
 print "PMIDs:", len(IDs)
 
 print "Converting PMIDs to PMCIDs"
@@ -61,7 +62,8 @@ with open("conversions.txt") as f:
 		if PMCID == "PMCID":
 			pass
 		elif PMCID != "":
-			IDs.append(PMCID[3:])
+			if PMCID[3:] not in IDs:
+				IDs.append(PMCID[3:])
 print "PMCIDs:", len(IDs)
 
 exp_time = len(IDs) * max_rate / 60.0
