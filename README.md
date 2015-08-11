@@ -21,3 +21,6 @@
     real	1m3.847s
     user	0m0.695s
     sys 	0m0.975s
+
+    $ ls
+    nonRed_enhancers.articles.txt	parser_log
