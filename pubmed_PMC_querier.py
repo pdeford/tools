@@ -1,5 +1,33 @@
 #!/usr/bin/env python
 
+"""
+################################################################################
+#                             pubmed_PMC_querier.py                            #
+#                                 Peter DeFord                                 #
+#                           Johns Hopkins University                           #
+#                                     2015                                     #
+################################################################################
+
+pubmed_PMC_querier is a tool that allows you to query NCBI's PubMed database,
+and download the full-text for articles that are available as part of the open
+access subset of PMC articles. It dumps the XML for all files into one file that
+can then be processed as you wish.
+
+The usage is as follows:
+
+    $ pubmed_PMC_querier.py outputFileBasename "your search query[&additional=options]"
+
+The additional options should be added to the end of your query without a space
+in the format descibed on the NCBI's E-utilities website:
+http://www.ncbi.nlm.nih.gov/books/NBK25500/
+
+The program works in the following way:
+1. Queries PubMed and downloads matching PMIDs
+2. Converts PMIDs to PMCIDs
+3. Accesses full text through the PMC-OAI
+
+"""
+
 import time
 import subprocess
 import sys
@@ -18,6 +46,7 @@ f_base = "out"
 
 if len(sys.argv) > 2:
 	query = "+".join(sys.argv[2:])
+	query.replace(" ", "+")
 	f_base = sys.argv[1]
 else:
 	print "Usage: %s f_out your search query" % sys.argv[0]
