@@ -24,3 +24,29 @@
 
     $ ls
     nonRed_enhancers.articles.txt	parser_log
+    
+###seq_logos
+[PWM_logo](https://github.com/pdeford/tools/blob/master/seq_logos/PWM_logo.py) is a module
+for creating quick and dirty sequence logos for a given PWM.
+
+*Usage:*
+
+```
+#!/usr/bin/env python
+
+import PWM_logo
+
+pwm = """0.00 4000.00  27.00 3887.00 3550.00 799.00 
+0.00   0.00  29.00   0.00   4.00 681.00 
+4000.00   0.00 109.00   6.00 383.00 2296.00 
+0.00   0.00 3835.00 107.00  63.00 224.00"""
+
+PWM_logo.main(pwm)
+```
+
+*Example output:*
+
+![](https://github.com/pdeford/tools/blob/master/seq_logos/logo.png)
+
+[gui](https://github.com/pdeford/tools/blob/master/seq_logos/gui.py) provides a quick GUI 
+for generating these logos on the fly, outside of a python script.
