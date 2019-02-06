@@ -1,19 +1,27 @@
 # tools
-*General tools for general projects*
+### *General tools for general projects*
 
-### text_hist
+See below for usage on the different tools:
+
+- [text_hist](#text_hist)
+- [text_scatter](#text_scatter)
+- [pubmed_PMC_querier](#pubmed_PMC_querier)
+- [seq_logos](#seq_logos)
+
+## text_hist
 
 Produce an ASCII histogram from an array of data.
 
 This script can be used either as a module in a script, or as a standalone command line tool. The basic usage is to provide an array of numbers to the function. Additionally you may specify the number of bins you want across the x-values.
 
-*Parameters:*
+**Parameters:**
+
     - `x`: _required_. An array or list with shape (n,) containing the data. 
         + If being used as a command line tool, this should be a file with one value per line.
     - `bins`: _optional_. The number of bins across the x-axis. (Default `10`)
         + Should be passed as the second argument for the command line version, if given.
 
-*Usage:*
+**Usage:**
 
 As module
 
@@ -63,13 +71,14 @@ $ python text_hist.py numbers.txt 50
      -2.57785345583                                  3.00170352365
 ```
 
-### text_scatter
+## text_scatter
 
 Produce an ASCII scatter plot or 2D density plot from an array of data.
 
 This script can be used either as a module in a script, or as a standalone command line tool. The basic usage is to provide an array of numbers to the function, and plot type (density or scatter). Additionally you may specify the height of the plot (in number of characters).
 
-*Parameters:*
+**Parameters:**
+
     - `x`, `y`: _required_. Each `x` and `y` should be an array or list with shape (n,) containing the data to be plotted.. 
         + If being used as a command line tool, this should be a file with two values per line, separated by white space.
     - `plot_type`: _required for CLI_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter` for Python module. Required for CLI)
@@ -77,7 +86,7 @@ This script can be used either as a module in a script, or as a standalone comma
     - `plot_height`: _optional_. The number of characters tall the plot is. Determins the size of the plot and level of binning of values. (Default is `20`)
         + Should be passed as the third argument for the command line version if given.
 
-> *NOTE:* Given the limitations of ASCII text, the values 
+> **NOTE:** Given the limitations of ASCII text, the values 
 > are binned before they are plotted. Therefore, you may 
 > have many points overlapping in the `scatter` version of
 > the plot. It is useful for seeing general trends, but 
@@ -85,7 +94,7 @@ This script can be used either as a module in a script, or as a standalone comma
 > that's important, use the `density` version to see 
 > where overlaps are occuring.
 
-*Usage:*
+**Usage:**
 
 As module
 
@@ -181,15 +190,15 @@ $ python text_scatter.py numbers.txt density 10
       0.0                    10.01
 ```
 
-### pubmed_PMC_querier
+## pubmed_PMC_querier
 
 [pubmed_PMC_querier](https://github.com/pdeford/tools/blob/master/pubmed_PMC_querier.py) is a tool that lets you query NCBI's PubMed database, take the resulting PMIDs, converts them to PMCIDs, and uses those to download the full text for all of the articles whose text is freely available. It also downloads the front matter (title, abstract, authors, etc.) for all available articles.
 
-*Usage:*
+**Usage:**
 
     $ ~/tools/pubmed_PMC_querier.py outputFileBasename "your search query[&additional=options]"
 
-*Example output:*
+**Example output:**
 
     $ ~/tools/pubmed_PMC_querier.py nonRed_enhancers  "human cis regulatory elements enhancers&mindate=2001"
     Querying PMC for 'human cis regulatory elements enhancers&mindate=2001'
@@ -205,15 +214,15 @@ $ python text_scatter.py numbers.txt density 10
 
     $ ls
     nonRed_enhancers.articles.txt	parser_log
-    
-### seq_logos
+
+## seq_logos
 
 [PWM_logo](https://github.com/pdeford/tools/blob/master/seq_logos/PWM_logo.py) is a module
 for creating quick and dirty sequence logos for a given PWM.
 
-*Usage:*
+**Usage:**
 
-```
+```python
 #!/usr/bin/env python
 
 import PWM_logo
@@ -225,8 +234,6 @@ pwm = """0.00 4000.00  27.00 3887.00 3550.00 799.00
 
 PWM_logo.main(pwm)
 ```
-
-*Example output:*
 
 ![](https://github.com/pdeford/tools/blob/master/seq_logos/logo.png)
 
