@@ -17,7 +17,7 @@ This script can be used either as a module in a script, or as a standalone comma
 
 As module
 
-```
+```python
 >>> # Generate some random data
 >>> import scipy as sp
 >>> import numpy as np
@@ -44,7 +44,7 @@ As module
 
 From the command line, using `numbers.txt`, which has the exact same values as we used above in a single column.
 
-```
+```bash
 $ python text_hist.py numbers.txt 50
 
  9.00|                                                  
@@ -87,7 +87,7 @@ This script can be used either as a module in a script, or as a standalone comma
 
 As module
 
-```
+```python
 >>> # Generate some data
 >>> import numpy as np
 >>> np.random.seed(seed=233423)
@@ -156,7 +156,7 @@ As module
 
 From the command line, using `numbers.txt`, which has the exact same values as we used above in two columns.
 
-```
+```bash
 $ python text_scatter.py numbers.txt density 10
 
  10.70+                      =#@  @  4.00e+00
