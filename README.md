@@ -3,6 +3,8 @@
 
 See below for usage on the different tools:
 
+## Table of Contents
+
 - [text_hist](#text_hist)
 - [text_scatter](#text_scatter)
 - [pubmed_PMC_querier](#pubmed_PMC_querier)
@@ -16,10 +18,10 @@ This script can be used either as a module in a script, or as a standalone comma
 
 **Parameters:**
 
-    - `x`: _required_. An array or list with shape (n,) containing the data. 
-        + If being used as a command line tool, this should be a file with one value per line.
-    - `bins`: _optional_. The number of bins across the x-axis. (Default `10`)
-        + Should be passed as the second argument for the command line version, if given.
+- `x`: _required_. An array or list with shape (n,) containing the data. 
+    + If being used as a command line tool, this should be a file with one value per line.
+- `bins`: _optional_. The number of bins across the x-axis. (Default `10`)
+    + Should be passed as the second argument for the command line version, if given.
 
 **Usage:**
 
@@ -79,12 +81,12 @@ This script can be used either as a module in a script, or as a standalone comma
 
 **Parameters:**
 
-    - `x`, `y`: _required_. Each `x` and `y` should be an array or list with shape (n,) containing the data to be plotted.. 
-        + If being used as a command line tool, this should be a file with two values per line, separated by white space.
-    - `plot_type`: _required for CLI_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter` for Python module. Required for CLI)
-        + Should be the second argument for the command line tool.
-    - `plot_height`: _optional_. The number of characters tall the plot is. Determins the size of the plot and level of binning of values. (Default is `20`)
-        + Should be passed as the third argument for the command line version if given.
+- `x`, `y`: _required_. Each `x` and `y` should be an array or list with shape (n,) containing the data to be plotted.. 
+    + If being used as a command line tool, this should be a file with two values per line, separated by white space.
+- `plot_type`: _required for CLI_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter` for Python module. Required for CLI)
+    + Should be the second argument for the command line tool.
+- `plot_height`: _optional_. The number of characters tall the plot is. Determins the size of the plot and level of binning of values. (Default is `20`)
+    + Should be passed as the third argument for the command line version if given.
 
 > **NOTE:** Given the limitations of ASCII text, the values 
 > are binned before they are plotted. Therefore, you may 
