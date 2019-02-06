@@ -8,6 +8,9 @@ See below for usage on the different tools:
 - [text_scatter](#text_scatter)
 - [pubmed_PMC_querier](#pubmed_PMC_querier)
 - [seq_logos](#seq_logos)
+- [progress_bar](#progress_bar)
+- [sequence_reader](#sequence_reader)
+
 
 ## text_hist
 
@@ -240,3 +243,34 @@ PWM_logo.main(pwm)
 
 [gui](https://github.com/pdeford/tools/blob/master/seq_logos/gui.py) provides a quick GUI 
 for generating these logos on the fly, outside of a python script.
+
+## progress_bar
+
+Create an ASCII progress bar based on progress towards a goal.
+
+**Usage:**
+
+```
+import time
+from progress_bar import progress_bar
+
+pbar = progress_bar(length=30)
+n = 100
+for i in range(n):
+    pbar.updateProgress(progress=i+1, total=n)
+    time.sleep(0.1)
+```
+
+![](progress.gif)
+
+## sequence_reader
+
+Works with sequence files in a few ways:
+
+- Reads in a FASTA file and returns the sequences as a list of strings.
+    + Doesn't return headers
+- Reads in a BED file and returns the chromosome positions as a list of tuples.
+    + Ignores strand information, names, etc. Only chr, start, end.
+- Given a genomic region, can extract the sequence from a FASTA file.
+    + Assumes that the FASTA sequence is formatted with one file for each chromosome.
+    + Assume 50 bp per line in the FASTA file.
