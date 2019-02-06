@@ -26,7 +26,7 @@ def main(pwm):
 	if pwm_ar.shape[0] != 4:
 		pwm_ar = pwm_ar.T
 	if pwm_ar.shape[0] != 4:
-		print "Array is the wrong shape. Should be of size `k` by 4"
+		print("Array is the wrong shape. Should be of size `k` by 4")
 		quit()
 	k = pwm_ar.shape[1]
 

@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 
-from tkinter import *
-from tkinter import scrolledtext
+import matplotlib
+matplotlib.use('TkAgg')
+
+try:
+	from tkinter import *
+	from tkinter import scrolledtext as tkst
+except:
+	from Tkinter import *
+	import ScrolledText as tkst
 import PWM_logo
 from PIL import Image, ImageTk
 
@@ -18,7 +25,7 @@ if __name__ == '__main__':
 	window.geometry('400x300')
 	scrollbar = Scrollbar(window)
 	# scrollbar.pack(side=BOTTOM, fill=X)
-	input_txt = scrolledtext.ScrolledText(window, width=50, height=5, xscrollcommand=scrollbar.set)
+	input_txt = tkst.ScrolledText(window, width=50, height=5, xscrollcommand=scrollbar.set)
 	input_txt.insert(INSERT, 'Enter your PWM here\n'+pwm)
 	# scrollbar.config(command=input_txt.xview)
 	image = Image.open('logo.png')
@@ -26,10 +33,10 @@ if __name__ == '__main__':
 	photo = ImageTk.PhotoImage(image)
 	label = Label(image=photo)
 	label.image = photo
-	label.pack()
+	# label.pack()
 	def clicked():
 		pwm = input_txt.get(1.0, END)
-		print pwm
+		print(pwm)
 		PWM_logo.main(pwm)
 		image = Image.open('logo.png')
 		image = image.resize((400,200), Image.ANTIALIAS)
