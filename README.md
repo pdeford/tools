@@ -27,7 +27,8 @@ As module
 >>> # Generate the plot
 >>> import text_hist
 >>> text_hist.main(x, bins=50)
-
+```
+```
  9.00|                                                  
  8.10|                   #                              
  7.20|                   #                              
@@ -44,9 +45,10 @@ As module
 
 From the command line, using `numbers.txt`, which has the exact same values as we used above in a single column.
 
-```bash
+```
 $ python text_hist.py numbers.txt 50
-
+```
+```
  9.00|                                                  
  8.10|                   #                              
  7.20|                   #                              
@@ -97,7 +99,8 @@ As module
 >>> # Generate the plot using defaults
 >>> import text_scatter
 >>> text_scatter.main(x,y)
-
+```
+```
  10.70+                                              ****
       |                                            **  **
       |                                          *  **   
@@ -120,10 +123,12 @@ As module
       |***                                               
   0.43+-------------------------------------------------+
       0.0                                             10.01
-
+```
+```python
 >>> # Change the plot size
 >>> text_scatter.main(x,y, plot_height=10)
-
+```
+```
  10.70+                      ***
       |                    **** 
       |                *****    
@@ -136,10 +141,12 @@ As module
       |****                     
   0.43+------------------------+
       0.0                    10.01
-
+```
+```python
 >>> # Change the plot type
 >>> text_scatter.main(x,y, plot_height=10, plot_type='density')
-
+```
+```
  10.70+                      =#@  @  4.00e+00
       |                    =@=:   %  3.60e+00
       |                ::=@=      #  3.20e+00
@@ -156,9 +163,10 @@ As module
 
 From the command line, using `numbers.txt`, which has the exact same values as we used above in two columns.
 
-```bash
+```
 $ python text_scatter.py numbers.txt density 10
-
+```
+```
  10.70+                      =#@  @  4.00e+00
       |                    =@=:   %  3.60e+00
       |                ::=@=      #  3.20e+00
