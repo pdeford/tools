@@ -28,7 +28,7 @@ def BED_reader(file_obj):
 		sequences.append(get_sequence(chrom, start, end))
 	return sequences
 
-def get_sequence(chrom,start=None,end=None,chrom_path = "/Users/pdeford/Thesis-Projects/Aim_3_Enh_Pred/Aim_3_2/EnhancerFinder_rep/data/hg19/"):
+def get_sequence(chrom,start=None,end=None,chrom_path = ""):
 	f_c = open(chrom_path + chrom + ".fa")
 	f_c.readline() 											# Read past the header
 	if start and end:									# If start and end coordinates provided, return sequence specified
