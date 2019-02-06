@@ -1,9 +1,8 @@
-# tools
 ### *General tools for general projects*
 
 See below for usage on the different tools:
 
-## Table of Contents
+# Table of Contents
 
 - [text_hist](#text_hist)
 - [text_scatter](#text_scatter)
