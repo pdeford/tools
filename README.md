@@ -72,7 +72,7 @@ As module
 From the command line, using `numbers.txt`, which has the exact same values as we used above in a single column.
 
 ```
-$ python text_hist.py numbers.txt 50
+$ python text_hist.py numbers.txt -b 50
 ```
 ```
  9.00|                                                  
