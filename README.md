@@ -18,12 +18,26 @@ Produce an ASCII histogram from an array of data.
 
 This script can be used either as a module in a script, or as a standalone command line tool. The basic usage is to provide an array of numbers to the function. Additionally you may specify the number of bins you want across the x-values.
 
-**Parameters:**
+**Module Parameters:**
 
 - `x`: _required_. An array or list with shape (n,) containing the data. 
-    + If being used as a command line tool, this should be a file with one value per line.
 - `bins`: _optional_. The number of bins across the x-axis. (Default `10`)
-    + Should be passed as the second argument for the command line version, if given.
+
+**CLI Parameters**
+
+```
+usage: text_hist.py [-h] [-b BINS] [input]
+
+Generate an ASCII based histogram from a one column file.
+
+positional arguments:
+  input                 A file with one column of numbers. Defaults to STDIN
+                        if not specified.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -b BINS, --bins BINS  The number of bins across the x-axis. (Default: 10)
+```
 
 **Usage:**
 
@@ -81,14 +95,12 @@ Produce an ASCII scatter plot or 2D density plot from an array of data.
 
 This script can be used either as a module in a script, or as a standalone command line tool. The basic usage is to provide an array of numbers to the function, and plot type (density or scatter). Additionally you may specify the height of the plot (in number of characters).
 
-**Parameters:**
+**Module Parameters:**
 
 - `x`, `y`: _required_. Each `x` and `y` should be an array or list with shape (n,) containing the data to be plotted.. 
-    + If being used as a command line tool, this should be a file with two values per line, separated by white space.
-- `plot_type`: _required for CLI_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter` for Python module. Required for CLI)
-    + Should be the second argument for the command line tool.
-- `plot_height`: _optional_. The number of characters tall the plot is. Determins the size of the plot and level of binning of values. (Default is `20`)
-    + Should be passed as the third argument for the command line version if given.
+- `plot_type`: _optional_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter`)
+- `plot_height`: _optional_. The number of characters tall the plot is. Determines the size of the plot and level of binning of values. (Default is `20`)
+- `sharesize`: _optional_. If `True`, the limits of the x and y axes will be the same. (Default is `False`)
 
 > **NOTE:** Given the limitations of ASCII text, the values 
 > are binned before they are plotted. Therefore, you may 
@@ -97,6 +109,29 @@ This script can be used either as a module in a script, or as a standalone comma
 > not necessarily for seeing the bulk of your points. If 
 > that's important, use the `density` version to see 
 > where overlaps are occuring.
+
+**CLI Parameters:**
+
+```
+usage: text_scatter.py [-h] [-y HEIGHT] [-t {scatter,density}] [--xy-lim]
+                       [input]
+
+Generate an ASCII based scatterplot from a two column file.
+
+positional arguments:
+  input                 A file with two columns of numbers separated by
+                        whitespace. Defaults to STDIN if not specified.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -y HEIGHT, --height HEIGHT
+                        The number of characters tall the plot will be.
+                        Determines the plot size. (Default: 20)
+  -t {scatter,density}, --type {scatter,density}
+                        Whether to generate a scatter plot or a density plot.
+                        (Default: scatter)
+  --xy-lim              make the x and y limits have the same axis limits.
+```
 
 **Usage:**
 
@@ -177,7 +212,7 @@ As module
 From the command line, using `numbers.txt`, which has the exact same values as we used above in two columns.
 
 ```
-$ python text_scatter.py numbers.txt density 10
+$ python text_scatter.py numbers.txt -t density -y 10
 ```
 ```
  10.70+                      =#@  @  4.00e+00

@@ -77,26 +77,27 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 
 if __name__ == '__main__':
 	import argparse
+	import sys
 	parser = argparse.ArgumentParser(
 		description="""\
 			Generate an ASCII based scatterplot from a two column file.
 			"""
 		)
 	parser.add_argument('-y', '--height', type=int, default=20,
-		help="The number of characters tall the plot will be. Determines the plot size."
+		help="The number of characters tall the plot will be. Determines the plot size. (Default: 20)"
 		)
 	parser.add_argument('-t', '--type', choices=['scatter', 'density'], type=str, default='scatter',
-		help="Whether to generate a scatter plot or a density plot."
+		help="Whether to generate a scatter plot or a density plot. (Default: scatter)"
 		)
 	parser.add_argument('--xy-lim', action='store_true',
 		help='make the x and y limits have the same axis limits.')
 	parser.add_argument('input', type=argparse.FileType('r'), 
-		default=argparse.SUPPRESS, nargs=1,
-		help='A file with two columns of numbers separated by whitespace.')
+		default=sys.stdin, nargs='?',
+		help='A file with two columns of numbers separated by whitespace. Defaults to STDIN if not specified.')
 	args = parser.parse_args()
 
 	x,y = [],[]
-	for line in args.input[0]:
+	for line in args.input:
 		valx, valy = [float(val) for val in line.split()]
 		x.append(valx)
 		y.append(valy)

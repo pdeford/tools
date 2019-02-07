@@ -37,14 +37,22 @@ def main(l, bins=10):
 	print " "*l_pad + nl.format(" "*(bins-len_nl)) + str(maxx)
 
 if __name__ == '__main__':
+	import argparse
 	import sys
-	# Read info from command line
-	f = open(sys.argv[1])
-	if len(sys.argv) > 2:
-		bins = int(sys.argv[2])
-	else:
-		bins = 10
+	parser = argparse.ArgumentParser(
+		description="""\
+			Generate an ASCII based histogram from a one column file.
+			""",
+		)
+	parser.add_argument('-b', '--bins', type=int, default=10,
+		help="The number of bins across the x-axis. (Default: 10)"
+		)
+	parser.add_argument('input', type=argparse.FileType('r'), 
+		default=sys.stdin, nargs='?',
+		help='A file with one column of numbers. Defaults to STDIN if not specified.')
+	args = parser.parse_args()
 
-	# Load and process data
-	l = [float(x.strip()) for x in f if x.strip()]
-	main(l, bins)
+	l = [float(x.strip()) for x in args.input if x.strip()]
+
+
+	main(l, args.bins)
