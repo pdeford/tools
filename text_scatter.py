@@ -1,6 +1,6 @@
 import numpy as np
 
-def main(x, y, plot_type='scatter', plot_height=20):
+def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 
 	x = np.asarray(x)
 	y = np.asarray(y)
@@ -13,6 +13,10 @@ def main(x, y, plot_type='scatter', plot_height=20):
 	maxx += (maxx-minx)*0.001
 	maxy = max(y)
 	maxy += (maxy-miny)*0.001
+
+	if sharesize:
+		minx = miny = min(minx, miny)
+		maxx = maxy = max(maxx, maxy)
 
 	rangex = maxx-minx
 	rangey = maxy-miny
@@ -71,23 +75,30 @@ def main(x, y, plot_type='scatter', plot_height=20):
 	print " "*l_pad + nl.format(" "*(plot_width-len_nl)) + str(maxx)
 
 
-
-
 if __name__ == '__main__':
-	import sys
+	import argparse
+	parser = argparse.ArgumentParser(
+		description="""\
+			Generate an ASCII based scatterplot from a two column file.
+			"""
+		)
+	parser.add_argument('-y', '--height', type=int, default=20,
+		help="The number of characters tall the plot will be. Determines the plot size."
+		)
+	parser.add_argument('-t', '--type', choices=['scatter', 'density'], type=str, default='scatter',
+		help="Whether to generate a scatter plot or a density plot."
+		)
+	parser.add_argument('--xy-lim', action='store_true',
+		help='make the x and y limits have the same axis limits.')
+	parser.add_argument('input', type=argparse.FileType('r'), 
+		default=argparse.SUPPRESS, nargs=1,
+		help='A file with two columns of numbers separated by whitespace.')
+	args = parser.parse_args()
+
 	x,y = [],[]
-	for line in open(sys.argv[1]):
+	for line in args.input[0]:
 		valx, valy = [float(val) for val in line.split()]
 		x.append(valx)
 		y.append(valy)
 
-	plot_type = sys.argv[2]
-
-	if len(sys.argv) > 3:
-		plot_height = int(sys.argv[3])
-	else:
-		plot_height = 20
-
-
-	
-	main(x, y, plot_height=plot_height, plot_type=plot_type)
+	main(x, y, plot_height=args.height, plot_type=args.type, sharesize=args.xy_lim)
