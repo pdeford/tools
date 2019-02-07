@@ -49,7 +49,10 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 			print nl
 	elif plot_type == 'density':
 		cbar = '\x1b[1;36;40m{} {:> 5.2e}\x1b[0m'
-		short_ramp = " .:-=+*#%@"
+		short_ramp = ".:-=+*#%@"
+		u = len(np.unique(short_ramp))
+		if u < len(short_ramp):
+			short_ramp = short_ramp[:u]
 		minramp = np.min(plot)
 		maxramp = np.max(plot)
 		maxramp += (maxramp - minramp)*0.001
@@ -62,7 +65,10 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 			else:
 				nl += " "*l_pad + "|"
 			for val in plot[i]:
-				nl += short_ramp[int((val-minramp)//binsizeramp)]
+				if val > 0:
+					nl += short_ramp[int((val-minramp)//binsizeramp)]
+				else:
+					nl += " "
 
 			if i < len(short_ramp):
 				nl += ("  " + cbar.format(short_ramp[-(1+i)], maxramp - i*binsizeramp))
