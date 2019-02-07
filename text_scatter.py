@@ -52,7 +52,7 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 		short_ramp = ".:-=+*#%@"
 		pmax = np.max(plot)
 		if pmax < len(short_ramp):
-			short_ramp = short_ramp[:pmax]
+			short_ramp = short_ramp[:int(pmax)]
 		minramp = np.min(plot)
 		maxramp = np.max(plot)
 		maxramp += (maxramp - minramp)*0.001
