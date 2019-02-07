@@ -51,7 +51,7 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
 		cbar = '\x1b[1;36;40m{} {:> 5.2e}\x1b[0m'
 		short_ramp = ".:-=+*#%@"
 		pmax = np.max(plot)
-		if u < pmax(short_ramp):
+		if pmax < len(short_ramp):
 			short_ramp = short_ramp[:pmax]
 		minramp = np.min(plot)
 		maxramp = np.max(plot)
