@@ -18,7 +18,7 @@ if __name__ == '__main__':
 0.00   0.00  29.00   0.00   4.00 681.00 
 4000.00   0.00 109.00   6.00 383.00 2296.00 
 0.00   0.00 3835.00 107.00  63.00 224.00"""
-	PWM_logo.main(pwm)
+	PWM_logo.main(pwm, 'logo.png')
 
 	window = Tk()
 	window.title("PWM to logo")

@@ -11,7 +11,7 @@ example_pwm = """1423.00 708.00 2782.00   0.00 4000.00  27.00 3887.00 3550.00 79
 1242.00 1235.00  10.00 4000.00   0.00 109.00   6.00 383.00 2296.00 1360.00 1099.00
 775.00 424.00 1177.00   0.00   0.00 3835.00 107.00  63.00 224.00 311.00 585.00"""
 
-def main(pwm):
+def main(pwm, outname='logo.png'):
 	lines = pwm.split('\n')
 	to_pop = []
 	for i,l in enumerate(lines):
@@ -55,7 +55,7 @@ def main(pwm):
 	plt.xlim([0,k])
 	plt.ylim([0,2])
 	fig.tight_layout()
-	plt.savefig('logo.png')
+	plt.savefig(outname)
 
 
 
