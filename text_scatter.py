@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import numpy as np
 
 def main(x, y, plot_type='scatter', plot_height=20, sharesize=False):
