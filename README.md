@@ -101,6 +101,7 @@ This script can be used either as a module in a script, or as a standalone comma
 - `plot_type`: _optional_. The type of plot you would like. Use `scatter` for a traditional scatterplot, or `density` where the plotted points will represent the number of points being plotted in a given cell. (Default `scatter`)
 - `plot_height`: _optional_. The number of characters tall the plot is. Determines the size of the plot and level of binning of values. (Default is `20`)
 - `sharesize`: _optional_. If `True`, the limits of the x and y axes will be the same. (Default is `False`)
+- `line`: _optional_. If `True`, prints the equation of the least squares line of best fit and the pearson correlation coefficient.
 
 > **NOTE:** Given the limitations of ASCII text, the values 
 > are binned before they are plotted. Therefore, you may 
@@ -131,6 +132,8 @@ optional arguments:
                         Whether to generate a scatter plot or a density plot.
                         (Default: scatter)
   --xy-lim              make the x and y limits have the same axis limits.
+  -r, --line            Print correlation and equation of the least-squares
+                        line of best fit.
 ```
 
 **Usage:**
