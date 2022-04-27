@@ -48,7 +48,7 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False, line=False)
                     nl += "*"
                 else:
                     nl += " "
-            print nl
+            print( nl)
     elif plot_type == 'density':
         cbar = '\x1b[1;36;40m{} {:> 5.2e}\x1b[0m'
         short_ramp = ".:-=+*#%@"
@@ -74,19 +74,19 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False, line=False)
 
             if i < len(short_ramp):
                 nl += ("  " + cbar.format(short_ramp[-(1+i)], maxramp - i*binsizeramp))
-            print nl
+            print( nl)
 
 
-    print "{0:> {1}.2f}".format(miny, l_pad) + "+" + "-"*(plot_width-1) + "+" 
+    print( "{0:> {1}.2f}".format(miny, l_pad) + "+" + "-"*(plot_width-1) + "+" )
     nl = str(minx)+"{}"
     len_nl = len(nl)
-    print " "*l_pad + nl.format(" "*(plot_width-len_nl)) + str(maxx)
+    print( " "*l_pad + nl.format(" "*(plot_width-len_nl)) + str(maxx))
 
     if line:
         z = np.polyfit(x, y, 1)
         r = np.corrcoef(x,y)[0,1]
-        print "Eqn of the line:   y = {:0.3f} x + {:0.3f}".format(z[0], z[1])
-        print "Correlation: {:0.3f}".format(r)
+        print( "Eqn of the line:   y = {:0.3f} x + {:0.3f}".format(z[0], z[1]))
+        print( "Correlation: {:0.3f}".format(r))
 
 
 

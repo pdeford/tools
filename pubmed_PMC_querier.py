@@ -49,11 +49,11 @@ if len(sys.argv) > 2:
 	query.replace(" ", "+")
 	f_base = sys.argv[1]
 else:
-	print "Usage: %s f_out your search query" % sys.argv[0]
+	print( "Usage: %s f_out your search query" % sys.argv[0] )
 	quit()
 
 count = 0
-print "Querying PMC for '%s'" % query
+print( "Querying PMC for '%s'" % query )
 while True:
 	time.sleep(max_rate)
 	subprocess.call('wget -a parser_log -O - "%s" >> accessions.txt' % search_base % (query, count, retmax),shell=True)
@@ -71,15 +71,15 @@ with open("accessions.txt") as f:
 			PMID = line.strip()[4:-5]
 			if PMID not in IDs:
 				IDs.append(PMID)
-print "PMIDs:", len(IDs)
+print( "PMIDs:", len(IDs) )
 
-print "Converting PMIDs to PMCIDs"
+print( "Converting PMIDs to PMCIDs" )
 for i in range(len(IDs)//200+1):
 	end = i + 200
 	if end > len(IDs):
 		end = len(IDs)
 	csv = ",".join(IDs[i:end])
-	#print csv
+	#print( csv )
 	time.sleep(max_rate)
 	subprocess.call('wget -a parser_log -O - "%s" >> conversions.txt' % convert_base % csv, shell=True)
 
@@ -93,10 +93,10 @@ with open("conversions.txt") as f:
 		elif PMCID != "":
 			if PMCID[3:] not in IDs:
 				IDs.append(PMCID[3:])
-print "PMCIDs:", len(IDs)
+print( "PMCIDs:", len(IDs) )
 
 exp_time = len(IDs) * max_rate / 60.0
-print "Downloading full text of articles. Minimum time = %0.1f minutes" % exp_time
+print( "Downloading full text of articles. Minimum time = %0.1f minutes" % exp_time )
 for PMCID in IDs:
 	time.sleep(max_rate)
 	subprocess.call('wget -a parser_log -O - "%s" >> %s.articles.txt' % (download_base % PMCID, f_base), shell=True)
@@ -107,7 +107,7 @@ with open("tmp_grep") as f:
 	for line in f:
 		count += 1
 
-print "Full text retrieved for %d articles" % count
+print( "Full text retrieved for %d articles" % count )
 
 subprocess.call('rm tmp_grep', shell=True)
 subprocess.call('rm accessions.txt', shell=True)

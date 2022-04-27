@@ -30,11 +30,11 @@ def main(l, bins=10):
 				nl += "."
 			else:
 				nl += " "
-		print nl
-	print "{0:> {1}.2f}".format(0, l_pad) + "+" + "-"*(bins-1) + "+"
+		print( nl)
+	print( "{0:> {1}.2f}".format(0, l_pad) + "+" + "-"*(bins-1) + "+")
 	nl = str(minx)+"{}"
 	len_nl = len(nl)
-	print " "*l_pad + nl.format(" "*(bins-len_nl)) + str(maxx)
+	print( " "*l_pad + nl.format(" "*(bins-len_nl)) + str(maxx))
 
 if __name__ == '__main__':
 	import argparse

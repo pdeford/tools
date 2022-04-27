@@ -16,4 +16,4 @@ class progress_bar(object):
 		sys.stdout.flush()
 		sys.stdout.flush()
 		if percent >= 100.0:
-			print bar[:-1]
+			print(bar[:-1])
