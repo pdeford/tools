@@ -22,6 +22,10 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False, line=False)
 
     rangex = maxx-minx
     rangey = maxy-miny
+    if rangex == 0:
+        rangex = 1
+    if rangey == 0:
+        rangey = 1
 
     binsizex = rangex/plot_width
     binsizey = rangey/plot_height
@@ -37,7 +41,7 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False, line=False)
 
     l_pad = len("{:> 0.2f}".format(maxy))
     if plot_type == 'scatter':
-        for i in xrange(plot_height):
+        for i in range(plot_height):
             nl = ""
             if i == 0:
                 nl += "{0:> {1}.2f}+".format(maxy, l_pad)
@@ -60,7 +64,7 @@ def main(x, y, plot_type='scatter', plot_height=20, sharesize=False, line=False)
         maxramp += (maxramp - minramp)*0.001
         binsizeramp = (maxramp - minramp)/len(short_ramp)
 
-        for i in xrange(plot_height):
+        for i in range(plot_height):
             nl = ""
             if i == 0:
                 nl += "{0:> {1}.2f}+".format(maxy, l_pad)
